@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% from 'bootstrap5/form.html' import render_form %}
+
+{% block title %}All Cafes{% endblock %}
+
+{% block styling %}
+{{ super() }}
+{% endblock %}
+
+
+
+{% block content %}
+  <body class="h-100 text-bg-light">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-8">
+
+      <h1 class="my-4"><u>{{ heading }} I</u></h1>
+
+      {{ render_form(form) }}
+
+	  <p class="space-above mt-4"><a href="{{ url_for('show_cafes') }}">See all cafes</a></p>
+
+        </div>
+      </div>
+    </div>
+  </body>
+{% endblock %}

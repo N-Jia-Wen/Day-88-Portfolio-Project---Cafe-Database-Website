@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}All Cafes{% endblock %}
+
+{% block styling %}
+{{ super() }}
+{% endblock %}
+
+
+
+{% block content %}
+  <body class="h-100 text-bg-light">
+    <div>
+      <div class="container">
+        <h1 class="my-4"><u>Welcome!</u></h1>
+
+        <!-- Table for code taken from https://stackoverflow.com/questions/52019676/dynamic-table-with-python -->
+        <table class="table table-light table-striped table-hover table-bordered">
+          <thead>
+          {% for column in columns: %}
+            <th>{{ column.replace("_", " ").title() }}</th>
+          {% endfor %}
+          </thead>
+
+          <tbody>
+          {% for row in cafes: %}
+            <tr>
+            {% for column in columns: %}
+              {% if column == "map_url" or column == "img_url": %}
+              <td><a href="{{ row|attr(column) }}">Link</a></td>
+              {% else: %}
+              <td>{{ row|attr(column) }}</td>
+              {% endif %}
+            {% endfor %}
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+
+    <div class="d-flex gap-2 justify-content-center">
+      <form action="{{ url_for('add_cafe') }}">
+        <button class="btn btn-dark rounded-pill px-3" type="submit">Add Cafe</button>
+      </form>
+      <form action="{{ url_for('delete_cafe') }}">
+        <button class="btn btn-dark rounded-pill px-3" type="submit">Delete Cafe</button>
+      </form>
+    </div>
+
+  {{ bootstrap.load_js() }}
+  </body>
+{% endblock %}

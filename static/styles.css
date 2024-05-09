@@ -1,0 +1,17 @@
+/* Unused table styling. Uncomment this if you prefer a solid line table: */
+
+/* table {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+table tr {
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+}
+table.table-bordered > thead > tr > th {
+    border: 1px solid black;
+}
+table.table-bordered > tbody > tr > td {
+    border: 1px solid black;
+}
+*/
